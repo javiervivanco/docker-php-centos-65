@@ -1,5 +1,7 @@
 # PHP 5.3.3 based on CentOS 6.5
 
+[![Build Status](https://travis-ci.org/javiervivanco/docker-php-centos-65.svg?branch=master)](https://travis-ci.org/javiervivanco/docker-php-centos-65)
+
 It seems to Redhat 6.5 with EPEL 
 
 # Include:

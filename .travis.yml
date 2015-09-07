@@ -4,4 +4,4 @@ services:
 before_script:
   - docker pull centos:centos6
 script:
-  - docker build . -t javiervivanco:latest
+  - docker build  -t javiervivanco:latest .

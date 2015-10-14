@@ -42,8 +42,17 @@ RUN yum -y install php-redis
 RUN yum -y install php-soap-$PHP_VERSION
 RUN yum -y install php-xml-$PHP_VERSION 
 RUN yum -y install php-pecl-ssh2
+RUN yum -y install which
+# Clients
+RUN yum -y install postgresql
+RUN yum -y install mysql
+RUN yum -y install zsh
+RUN yum -y install vim
 RUN yum clean all
 
+RUN env TERM=xterm sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ 
+RUN echo "plugins=(git dirhistory common-aliases symfony2 git-remote-branch vi-mode )" > /root/.zshrc
 #
 # configuracion de php.ini
 #
@@ -55,6 +64,7 @@ RUN rm /etc/php.ini -Rf
 #
 #---------------------------
 ADD etc /etc
+ADD gitconfig /root/.gitconfig
 RUN sed -i $(echo "s/{TIMEZONE}/$(echo $TIMEZONE | sed -e 's/\//\\\//g')/g") /etc/php.d/date.ini 
 RUN ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 

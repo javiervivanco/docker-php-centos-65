@@ -52,7 +52,7 @@ RUN yum clean all
 ENV TERM=xterm 
 RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
  
-RUN echo "plugins=(git dirhistory common-aliases symfony2 git-remote-branch vi-mode )" >> /root/.zshrc
+RUN sed -i "s/plugins=(git)/plugins=(git dirhistory common-aliases symfony2 git-remote-branch)/g" /root/.zshrc
 #
 # configuracion de php.ini
 #

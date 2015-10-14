@@ -49,10 +49,10 @@ RUN yum -y install mysql
 RUN yum -y install zsh
 RUN yum -y install vim
 RUN yum clean all
-
-RUN env TERM=xterm sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ENV TERM=xterm 
+RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
  
-RUN echo "plugins=(git dirhistory common-aliases symfony2 git-remote-branch vi-mode )" > /root/.zshrc
+RUN echo "plugins=(git dirhistory common-aliases symfony2 git-remote-branch vi-mode )" >> /root/.zshrc
 #
 # configuracion de php.ini
 #

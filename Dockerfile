@@ -48,11 +48,9 @@ RUN yum -y install postgresql
 RUN yum -y install mysql
 RUN yum -y install zsh
 RUN yum -y install vim
+RUN yum -y install sudo
+RUN yum -y install patch
 RUN yum clean all
-ENV TERM=xterm 
-RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
- 
-RUN sed -i "s/plugins=(git)/plugins=(git dirhistory common-aliases symfony2 git-remote-branch)/g" /root/.zshrc
 #
 # configuracion de php.ini
 #
@@ -71,6 +69,5 @@ RUN ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 WORKDIR /data
 EXPOSE 9000
  
-ENV PATH $PATH:/php/bin
 
 ENTRYPOINT exec php-fpm --fpm-config /etc/php-fpm.d/www.conf -RF
